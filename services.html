@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+}
+
+input[type=text], input[type=number], input[type=email], select {
+  width: 20%;
+}
+
+input[name=cardnumber], select {
+width: 20%;
+text-align: left;
+nargin: 10px right;
+}
+
+input[type=date], select {
+width: 10%;
+text-align: right;
+nargin: 10px right;
+}
+
+input[type=submit], input[type=reset]{
+  width: 50%;
+  margin: 10px auto;
+  display: block;
+}
+
+</style>
+
+</head>
+<body>
+    <h1>Online delivery service</h1>
+<form action="Sample.html" method="post">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name">
+    <br><br>
+      
+      <label for="number"> Mobile Number:</label>
+      <input type="number" id="number" name="number"><br><br>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email"><br><br>
+  
+  <table>
+    <tr>
+      <th colspan="5">Product Details</th>
+    </tr>
+    <tr>
+      <td><strong>Name of the product</strong></td>
+      <td><strong>No. of carat</strong></td>
+      <td><strong>Price per carat</strong></td>
+      <td><strong>Product Quantity</strong></td>
+      <td><strong>Total Price</strong></td>
+    </tr>
+    <tr>
+      <td>
+        <select id="product" name="product" onchange="displayProductDetails()">
+          <option value="" disabled selected>Select a product</option>
+          <option value="Diamond - 80000 Rs">Diamond - 80000 Rs</option>
+          <option value="Ruby - 40000 Rs">Ruby - 40000 Rs</option>
+          <option value="Emerald - 56000 Rs">Emerald - 56000 Rs</option>
+          <option value="Azurite - 10000 Rs">Azurite - 10000 Rs</option>
+          <option value="Garnet - 8000 Rs">Garnet - 8000 Rs</option>
+          <option value="Spessatine Garnet - 20000 Rs">Spessatine Garnet - 20000 Rs</option>
+          <option value="Grossular - 16000 Rs">Grossular - 16000 Rs</option>
+          <option value="Cuprite - 16000 Rs">Cuprite - 16000 Rs</option>
+          <option value="kyanite - 10000 Rs">kyanite - 10000 Rs</option>
+          <option value="Elbaite - 25000 Rs">Elbaite - 25000 Rs</option>
+          <option value="Tourmaline - 15000 Rs">Tourmaline - 15000 Rs</option>
+          <option value="Flourite - 5000 Rs">Flourite - 5000 Rs</option>
+          <option value="Uvarovite - 1000 Rs">Uvarovite - 1000 Rs</option>
+
+        </select>
+      </td>
+      <td><input type="number" id="carat" name="carat" min="0" max="100"></td>
+      <td id="productPriceCell"></td>
+      <td><input type="number" id="quantity" name="quantity" min="0" max="100" onchange="displayProductDetails()"></td>
+      <td id="totalPrice"></td> 
+    </tr>
+  </table><br>
+  
+  <strong>Selected Product Name: <span id="selectedProductName"></span></strong>
+  <br>
+  <strong>Selected Product Price Per carat: <span id="selectedProductPrice"></span></strong>
+  <br>
+  <strong>Selected Product Carat: <span id="selectedCarat"></span></strong>
+  <br>
+  <strong>Selected Product Quantity: <span id="selectedProductQuantity"></span></strong>
+  
+  <br><br>
+  
+     <strong>Credit Card Detail<strong>
+  
+     <label for="cardtype">Credit Card Type:</label><br><br>
+          <input type="radio" name="cardtype" value="visa">Visa<br>
+          <input type="radio" name="cardtype" value="mastercard">MasterCard<br>
+          <input type="radio" name="cardtype" value="amex">American Express<br>
+          <input type="radio" name="cardtype" value="debit">Debit card<br><br>
+      <label for="number">Card Number:</label>
+      <input type="number" name="cardnumber"><br>
+      <label for="date">Expiry Date:</label>
+      <input type="date" name="date">
+    <br><br>
+  
+      <label for="address">Delivery Address:</label>
+      <textarea id="address" name="address" ></textarea><br><br>
+      <input type="submit" value="Send Order" onclick="sendOrder()">
+      <input type="reset" value="Clear Form">
+
+</form>
+<script>
+  function displayProductDetails() {
+    var selectedProduct = document.getElementById("product").value;
+    var productDetails = selectedProduct.split(" - ");
+    var productName = productDetails[0];
+    var productPrice = parseInt(productDetails[1].split(" ")[0]); // Extract price from the selected product
+    var productQuantity = parseInt(document.getElementById("quantity").value);
+    var carat = parseInt(document.getElementById("carat").value);
+    var totalPrice = productPrice * carat * productQuantity; 
+    document.getElementById("selectedProductName").innerText = productName;
+    document.getElementById("selectedProductPrice").innerText = productPrice;
+    document.getElementById("selectedCarat").innerText = carat;
+    document.getElementById("selectedProductQuantity").innerText = productQuantity;
+    document.getElementById("totalPrice").innerText = totalPrice;
+    document.getElementById("productPriceCell").innerText = productPrice;
+  }
+  
+  function sendOrder() {
+    alert("Your order will be delivered within 4 days.");
+  }
+  </script>
+</body>
+</html>

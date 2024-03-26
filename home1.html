@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precious Stones Store</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: auto;
+        padding: 10px;
+        background-color: white;
+    }
+
+    header {
+        background-color: black;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+    }
+
+    nav {
+        background-color: grey;
+        padding: 20px;
+        text-align: center;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        padding: 20px;
+        margin: 10px;
+    }
+
+    #products {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: 20px;
+    }
+
+    .product-card {
+        border: 1px solid #ccc;
+        border-radius: 50px;
+        margin: 30px;
+        padding: 110px;
+        width: 300px;
+        background-color: Aqua;
+    }
+
+    footer {
+        background-color: green;
+        color: #fff;
+        text-align: center;
+        padding: 20px;
+    }
+
+    section {
+        padding: 2em;
+    }
+    
+    #home {
+    text-align: center; 
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Precious Stones Store</h1>
+        <nav>
+            <a href="#" onclick="showSection('Home')">Home</a>
+            <a href="#" onclick="showSection('Shop')">Shop</a>
+            <a href="#" onclick="showSection('About Us')">About Us</a>
+            <a href="#" onclick="showSection('Services')">Services</a>
+        </nav>
+    </header>
+    <section id="Home">
+    <h2>Welcome to Precious Stones Store</h2><br>
+    <p>Discover the finest collection of diamonds, rubies, emeralds, and more.</p>
+    <p>Explore our website to find the perfect gem for any occasion.</p>
+    <img src="Diamond.jpg" width="33%">
+    <img src="Ruby.jpg" width="33%">
+    <img src="Emerald.jpg" width="33%">
+    <img src="Azurite.jpg" width="33%">
+    <img src="Kyanite.jpg" width="33%">
+    <img src="Garnet.jpg" width="33%">
+    <img src="Grossular.jpg" width="33%">
+    <img src="Spessartine Garnet.jpg" width="33%">
+    <img src="Flourite.jpg" width="33%">
+    <img src="Tourmaline.jpg" width="33%">
+    <img src="Uvarovite.jpg" width="33%">
+    <img src="Elbaite.jpg" width="33%">
+</section>
+
+    <section id="Shop" style="display:none;">
+        <script>
+            const products = [
+            { name: "Diamond", price: "80000 Rs", image: "diamond.jpg" },
+            { name: "Ruby", price: "40000 Rs", image: "ruby.jpg" },
+            { name: "Emerald", price: "56000 Rs", image: "emerald.jpg" },
+            
+            { name: "Azurite", price: "10000", image: "azurite.jpg" },
+            { name: "Garnet", price: "8000 Rs", image: "garnet.jpg" },
+            { name: "Grossular", price: "16000 Rs", image: "grossular.jpg" },
+            { name: "Cuprite", price: "16000 Rs", image: "cuprite.jpg" },
+            { name: "Kyanite", price: "10000 Rs", image: "Kyanite.jpg" },
+            { name: "Spessartine Garnet", price: "20000 Rs", image: "spessartine garnet.jpg" },
+            { name: "Elbaite", price: "25000 Rs", image: "elbaite.jpg" },
+            { name: "Tourmaline", price: "15000 Rs", image: "tourmaline.jpg" },
+            { name: "Flourite", price: "5000 Rs", image: "flourite.jpg" },
+            { name: "Uvarovite", price: "1000 Rs", image: "uvarovite.jpg" }
+        ];
+        
+        
+            function displayProducts() {
+                const productsContainer = document.getElementById('Shop');
+                productsContainer.innerHTML = '';
+        
+                products.forEach(product => {
+                    const card = document.createElement('div');
+                    card.classList.add('product-card');
+                    card.innerHTML = `
+                        <img src="${product.image}" width="130%" align="center" alt="${product.name}">
+                        <h2>${product.name}</h2>
+                        <p>${product.price}</p>
+                        <button>Add to Cart</button>
+                    `;
+                    productsContainer.appendChild(card);
+                });
+            }
+        
+            document.addEventListener('DOMContentLoaded', displayProducts);
+            </script>   
+    </section>
+    <section id="About Us" style="display:none;">
+        <h2>About Us</h2>
+        <p>Welcome to Precious Stones Store! We specialize in providing exquisite diamonds, rubies, emeralds, and more. Our passion for quality and craftsmanship drives us to offer the finest selection of precious stones to our customers. With years of experience in the industry, we are committed to delivering exceptional service and helping you find the perfect gem for any occasion.</p>
+    </section>
+    <section id="Services" style="display:none;">
+        <h2>Services</h2>
+        <p>Explore our range of services:</p>
+        <ul>
+            <li><a href="https://www.bluestone.com/jewellery/gemstone.html?utm_campaign=&utm_medium=cpc&utm_source=google&gad_source=1&gclid=CjwKCAiA8YyuBhBSEiwA5R3-EzuV4UsgqVTfjuGFQa2bVA5CWILMaiC9wVgKjr5hoqg3hHmtp1HnFBoCpIkQAvD_BwE">Custom Jewelry Design</a></li>
+            <li><a href="https://thenaturalgem.com/en/have-gemstones-appraised/">Stone Appraisals</a></li>
+            <li><a href="https://quickjewelryrepairs.com/articles/how-to-repair-a-damaged-gemstone/">Repair and Restoration</a></li>
+            <li><a href="services.html">Delivery service</a></li> 
+        </ul>
+    </section>
+    
+    <script>
+    function showSection(sectionId) {
+        document.querySelectorAll('section').forEach(section => {
+            section.style.display = 'none';
+        });
+        document.getElementById(sectionId).style.display = 'block';
+    }
+    </script>
+
+    <footer>
+        <p>Contact:</p>
+        <p>Email Id - patilankit225@gmail.com.com</p>
+        <p>Mobile No - 9137703125</p>
+    </footer>
+</body>
+</html>
